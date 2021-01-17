@@ -199,9 +199,17 @@ int main (int argc, char *argv[])
   WifiMacHelper wifiMac;
   // [deprecated] wifi.SetStandard(WIFI_PHY_STANDARD_80211b);
   wifi.SetStandard (WIFI_STANDARD_80211b);
-  wifi.SetRemoteStationManager ("ns3::ConstantRateWifiManager",
+
+  bool isAdaptiveRate=false;
+  if (isAdaptiveRate==false){
+	  wifi.SetRemoteStationManager ("ns3::ConstantRateWifiManager",
                                 "DataMode",StringValue (phyMode),
                                 "ControlMode",StringValue (phyMode));
+  }
+  else{
+	  wifi.SetRemoteStationManager("ns3::AarfWifiManager");
+  }
+
   // Set it to adhoc mode
   wifiMac.SetType ("ns3::AdhocWifiMac");
   NetDeviceContainer devices = wifi.Install (wifiPhy, wifiMac, c);
