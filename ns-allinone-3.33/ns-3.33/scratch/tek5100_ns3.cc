@@ -184,7 +184,7 @@ int main (int argc, char *argv[])
   // The below set of helpers will help us to put together the wifi NICs we want
   WifiHelper wifi;
 
-  YansWifiPhyHelper wifiPhy;// =  YansWifiPhyHelper::Default ();
+  YansWifiPhyHelper wifiPhy; // [deprecated] =  YansWifiPhyHelper::Default ();
   // set it to zero; otherwise, gain will be added
   wifiPhy.Set ("RxGain", DoubleValue (-10) ); 
   // ns-3 supports RadioTap and Prism tracing extensions for 802.11b
@@ -197,6 +197,7 @@ int main (int argc, char *argv[])
 
   // Add a non-QoS upper mac, and disable rate control
   WifiMacHelper wifiMac;
+  // [deprecated] wifi.SetStandard(WIFI_PHY_STANDARD_80211b);
   wifi.SetStandard (WIFI_STANDARD_80211b);
   wifi.SetRemoteStationManager ("ns3::ConstantRateWifiManager",
                                 "DataMode",StringValue (phyMode),
