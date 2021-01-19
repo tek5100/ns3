@@ -1,7 +1,6 @@
 .lock-waf_linux_build
 .waf*
 build/
-waf-tools/
 __pycache__
 pybindgen*/
 
