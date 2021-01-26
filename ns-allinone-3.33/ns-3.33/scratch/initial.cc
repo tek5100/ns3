@@ -175,6 +175,8 @@ int main (int argc, char *argv[])
   Config::SetDefault ("ns3::WifiRemoteStationManager::RtsCtsThreshold", StringValue (rtslimit));
   // Fix non-unicast data rate to be the same as that of unicast
   Config::SetDefault ("ns3::WifiRemoteStationManager::NonUnicastMode", StringValue (phyMode));
+  // Ensure capture at adaptive link functional distances. Default is -82.
+  Config::SetDefault("ns3::ThresholdPreambleDetectionModel::MinimumRssi", DoubleValue(-100));
 
 
   // Create m_ySize*m_xSize stations to form a grid topology

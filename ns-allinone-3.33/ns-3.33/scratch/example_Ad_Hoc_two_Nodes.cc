@@ -160,6 +160,9 @@ int main (int argc, char *argv[])
 
 	Config::SetDefault("ns3::WifiRemoteStationManager::NonUnicastMode", StringValue("DsssRate1Mbps"));
 	//Config::SetDefault("ns3::WifiRemoteStationManager::PhyControlMode", StringValue("DsssRate1Mbps"));
+	// Ensure capture at adaptive link functional distances. Default is -82.
+	Config::SetDefault("ns3::ThresholdPreambleDetectionModel::MinimumRssi", DoubleValue(-100));
+
 	//Create 2 nodes
 	NodeContainer wifiNodes;
 	wifiNodes.Create (2);

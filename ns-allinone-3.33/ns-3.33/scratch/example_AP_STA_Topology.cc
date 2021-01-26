@@ -133,6 +133,8 @@ int main (int argc, char *argv[])
 	// [deprecated] wifi.SetStandard(WIFI_PHY_STANDARD_80211b);
 	wifi.SetStandard (WIFI_STANDARD_80211b);
 	wifi.SetRemoteStationManager ("ns3::MinstrelHtWifiManager", "RtsCtsThreshold", UintegerValue (rtsThreshold));
+	// Ensure capture at adaptive link functional distances. Default is -82.
+	Config::SetDefault("ns3::ThresholdPreambleDetectionModel::MinimumRssi", DoubleValue(-100));
 
 	WifiMacHelper wifiMac;
 	//wifiMac.SetType("ns3::AdhocWifiMac"); //Using Access Point topology instead
